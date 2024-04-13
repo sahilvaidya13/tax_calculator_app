@@ -59,7 +59,7 @@ form.addEventListener("submit", function (event) {
     modalBody.appendChild(errorMessage);
   } else {
     event.preventDefault();
-
+    event.stopPropagation();
     console.log("correct");
     const childToRemove = modalBody.querySelector("h3");
 
