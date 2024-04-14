@@ -44,10 +44,26 @@ var tooltipTriggerList = [].slice.call(
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl);
 });
+// const handleSubmit = (event) => {
+//   event.preventDefault();
+
+//   const myForm = event.target;
+//   const formData = new FormData(myForm);
+
+//   fetch("/", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+//     body: new URLSearchParams(formData).toString(),
+//   })
+//     .then(() => alert("Thank you for your submission"))
+//     .catch((error) => alert(error));
+// };
+
+// document.querySelector("form").addEventListener("submit", handleSubmit);
 
 form.addEventListener("submit", function (event) {
+  event.preventDefault();
   if (!form.checkValidity()) {
-    event.preventDefault();
     event.stopPropagation();
     modalBody.querySelectorAll("*").forEach((child) => {
       child.style.display = "none";
@@ -58,7 +74,6 @@ form.addEventListener("submit", function (event) {
 
     modalBody.appendChild(errorMessage);
   } else {
-    event.preventDefault();
     event.stopPropagation();
     console.log("correct");
     const childToRemove = modalBody.querySelector("h3");
